@@ -1,0 +1,14 @@
+{
+    "name": "Reaffliate",
+    "description": "An extension to revert changes to your affiliate code.",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "host_permissions": ["<all_urls>"],
+    "permissions": ["cookies", "storage"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_icon": "reaffiliate.png"
+    }
+}
