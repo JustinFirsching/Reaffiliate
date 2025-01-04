@@ -62,7 +62,7 @@ function storeCookieLocally(key, setableCookie) {
 function setCookie(setableCookie) {
     console.debug('Attempting to set cookie', setableCookie)
     chrome.cookies.set(setableCookie, function (cookie) {
-        if(chrome.runtime.lastError) {
+        if (chrome.runtime.lastError) {
             console.error(
                 'Failed to set cookie!',
                 chrome.runtime.lastError,
@@ -101,7 +101,7 @@ chrome.cookies.onChanged.addListener((changeInfo) => {
     }
 
     const newCookie = changeInfo.cookie
-    if(newCookie.domain.startsWith(".")){
+    if (newCookie.domain.startsWith('.')) {
         newCookie.domain = newCookie.domain.slice(1)
     }
 
@@ -137,6 +137,21 @@ chrome.cookies.onChanged.addListener((changeInfo) => {
                     console.warn(
                         'Affiliate changed! Changing back...',
                         storedCookie
+                    )
+                    chrome.tabs.query(
+                        { active: true, currentWindow: true },
+                        (tabs) => {
+                            if (tabs.length > 0) {
+                                chrome.tabs.sendMessage(tabs[0].id, {
+                                    type: 'reaffiliate-showPopup',
+                                    message:
+                                        'Affiliate changed! Changing back to previous value.',
+                                    display_seconds: 5,
+                                })
+                            } else {
+                                console.error('No active tab found!')
+                            }
+                        }
                     )
                     overwriteNewAffiliate(setableNewCookie, storedCookie)
                 } else {
