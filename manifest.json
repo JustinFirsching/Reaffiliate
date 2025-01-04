@@ -21,6 +21,9 @@
         "48": "icons/reaffiliate48.png",
         "128": "icons/reaffiliate128.png"
     },
+    "author": {
+        "email": "JustinFirsching@gmail.com"
+    },
     "action": {
         "default_icon": "icons/reaffiliate.png"
     }
