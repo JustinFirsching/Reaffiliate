@@ -15,7 +15,13 @@
             "css": ["styles.css"]
         }
     ],
+    "icons": {
+        "16": "icons/reaffiliate16.png",
+        "32": "icons/reaffiliate32.png",
+        "48": "icons/reaffiliate48.png",
+        "128": "icons/reaffiliate128.png"
+    },
     "action": {
-        "default_icon": "reaffiliate.png"
+        "default_icon": "icons/reaffiliate.png"
     }
 }
